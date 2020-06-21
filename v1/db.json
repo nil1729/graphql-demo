@@ -1,10 +1,10 @@
 {
   "customers": [
     {
-      "id": "2",
-      "name": "nilanjan2",
-      "email": "nil2@gmail.com",
-      "age": 19
+      "name": "nil deb",
+      "email": "updated@gmail.com",
+      "age": 90,
+      "id": "2"
     },
     {
       "id": "3",
