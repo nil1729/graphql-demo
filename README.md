@@ -2,11 +2,11 @@
 
 ### What is `GraphQL` ?
 
-* Application layer query language
-* Open sourced by Facebook 2015
-* Can be used with any type of Database
-* ability to ask for exactly what you need and nothing more
-* Get multiple resources in a single request.
+- Application layer query language
+- Open sourced by Facebook 2015
+- Can be used with any type of Database
+- ability to ask for exactly what you need and nothing more
+- Get multiple resources in a single request.
 
 ### Simple Query
 
@@ -15,7 +15,7 @@
     <td> The Query </td> <td> The Data </td>
 </tr>
 <tr>
-<td> 
+<td>
 
 ```
 {
@@ -25,6 +25,7 @@
     }
 }
 ```
+
 </td>
 <td>
 
@@ -37,6 +38,7 @@
     }
 }
 ```
+
 </td>
 </tr>
 </table>
@@ -48,7 +50,7 @@
     <td> The Query </td> <td> The Data </td>
 </tr>
 <tr>
-<td> 
+<td>
 
 ```
 {
@@ -61,6 +63,7 @@
     }
 }
 ```
+
 </td>
 <td>
 
@@ -77,23 +80,25 @@
     }
 }
 ```
+
 </td>
 </tr>
 </table>
 
 ### GraphQL Types
 
-* GraphQL APIs are organized in terms of types and fields
+- GraphQL APIs are organized in terms of types and fields
 
 <table>
 <tr>
-<td> 
+<td>
 
 ```
 Type Query {
     user: User
 }
 ```
+
 </td>
 <td>
 
@@ -104,18 +109,18 @@ Type User {
     friends: [User]
 }
 ```
+
 </td>
 </tr>
 </table>
 
 ### GraphiQL Tool
 
-* Graphical interactive GraphQL IDE
-* Runs in the browser
-* Syntex highlighting
-* Error reporting
-* Automation & Hinting
-
+- Graphical interactive GraphQL IDE
+- Runs in the browser
+- Syntex highlighting
+- Error reporting
+- Automation & Hinting
 
 ### Learning Plan ( v1 )
 
@@ -125,3 +130,19 @@ Type User {
 4. Implement JSON-Server
 5. CRUD Functionality
 6. Test with Graphiql
+
+### Learning Plan ( GraphQL with React and Apollo).
+
+1. ##### Server Setup
+   - Build the Express back end server
+   - Setup Express With Express-Graphql
+   - Create schema file with queries and mutations
+   - Read API [Docs](https://docs.spacexdata.com/?version=latest).
+   - Implement Types and setup axios.
+   - Test with Graphiql.
+2. ##### Frontend Part
+   - Build a basic React App using `create-react-app`,
+   - Setup UI and Components (Use _Bootstrap_)
+   - Read Apollo [Docs](https://www.apollographql.com/docs/react/)
+   - Only Two query needed for this app.
+   - Handling Errors.
