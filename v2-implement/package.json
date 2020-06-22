@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "App that uses SpaceX API and show launches",
   "main": "server.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server",
