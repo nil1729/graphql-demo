@@ -18,9 +18,15 @@ const config = {
 const RocketType = new GraphQLObjectType({
     name: 'Rocket',
     fields: () => ({
-        rocket_id: {type: GraphQLString},
-        rocket_name: {type: GraphQLString},
-        rocket_type: {type: GraphQLString}
+        rocket_id: {
+            type: GraphQLString
+        },
+        rocket_name: {
+            type: GraphQLString
+        },
+        rocket_type: {
+            type: GraphQLString
+        }
     })
 });
 
@@ -29,12 +35,24 @@ const RocketType = new GraphQLObjectType({
 const LaunchType = new GraphQLObjectType({
     name: 'Launch',
     fields: () => ({
-        flight_number: {type: GraphQLInt},
-        mission_name: {type: GraphQLString},
-        launch_year: {type: GraphQLString},
-        launch_date_local: {type: GraphQLString},
-        launch_success: {type: GraphQLBoolean},
-        rocket: {type: RocketType},
+        flight_number: {
+            type: GraphQLInt
+        },
+        mission_name: {
+            type: GraphQLString
+        },
+        launch_year: {
+            type: GraphQLString
+        },
+        launch_date_local: {
+            type: GraphQLString
+        },
+        launch_success: {
+            type: GraphQLBoolean
+        },
+        rocket: {
+            type: RocketType
+        },
     })
 });
 
@@ -44,15 +62,19 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         launches: {
             type: new GraphQLList(LaunchType),
-            resolve(parentvalue, args){
+            resolve(parentvalue, args) {
                 return axios.get('/launches', config)
-                    .then(res => res.data)
+                    .then(res => {
+                        return res.data;
+                    })
             }
         },
         launch: {
             type: LaunchType,
             args: {
-                flight_number: {type: GraphQLInt}
+                flight_number: {
+                    type: GraphQLInt
+                }
             },
             resolve(parentvalue, args) {
                 return axios.get(`/launches/${args.flight_number}`, config)
@@ -68,8 +90,10 @@ const RootQuery = new GraphQLObjectType({
         },
         rocket: {
             type: RocketType,
-            args:{
-                rocket_id: {type: GraphQLString}
+            args: {
+                rocket_id: {
+                    type: GraphQLString
+                }
             },
             resolve(parentvalue, args) {
                 return axios.get(`/rockets/${args.rocket_id}`, config)

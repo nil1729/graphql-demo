@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Components
 import Loader from './Loader';
 import LaunchItem from './LaunchItem';
+import Paginate from './Paginate';
 
 // Apollo
 import { gql } from 'apollo-boost';
@@ -20,7 +21,36 @@ const LAUNCHES_QUERY = gql`
 `;
 
 const Launches = () => {
+	const [launches, setLaunches] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [pageNums, setPageNums] = useState([]);
+	const launchesPerPage = 15;
+	let indexOfLastLaunch, indexOfFirstLaunch;
+
 	const { loading, error, data } = useQuery(LAUNCHES_QUERY);
+	useEffect(() => {
+		if (typeof data !== 'undefined') {
+			setCurrentLuanches(data.launches, currentPage);
+			let arr = [];
+			const totalPages = Math.ceil(data.launches.length / launchesPerPage);
+			for (let i = 1; i <= totalPages; i++) {
+				arr.push(i);
+			}
+			setPageNums(arr);
+		}
+	}, [data]);
+
+	const setCurrentLuanches = (launches, currentPage) => {
+		indexOfLastLaunch = currentPage * launchesPerPage;
+		indexOfFirstLaunch = indexOfLastLaunch - launchesPerPage;
+		setLaunches(launches.slice(indexOfFirstLaunch, indexOfLastLaunch));
+	};
+
+	const changePage = page => {
+		setCurrentPage(page);
+		setCurrentLuanches(data.launches, page);
+	};
+
 	if (error)
 		return (
 			<div style={{ fontSize: '1.5em', textAlign: 'center' }} className='mt-4'>
@@ -40,11 +70,18 @@ const Launches = () => {
 			{loading ? (
 				<Loader />
 			) : (
-				<div className='list-group mb-4'>
-					{data.launches.map(launch => (
-						<LaunchItem key={launch.flight_number} launch={launch} />
-					))}
-				</div>
+				<>
+					<Paginate
+						pageNums={pageNums}
+						paginate={changePage}
+						currentPage={currentPage}
+					/>
+					<div className='list-group mb-4'>
+						{launches.map(launch => (
+							<LaunchItem key={launch.flight_number} launch={launch} />
+						))}
+					</div>
+				</>
 			)}
 		</div>
 	);
