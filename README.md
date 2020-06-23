@@ -131,7 +131,7 @@ Type User {
 5. CRUD Functionality
 6. Test with Graphiql
 
-### Learning Plan ( GraphQL with React and Apollo).
+### Learning Plan ( GraphQL with React and Apollo ).
 
 1. ##### Server Setup
    - Build the Express back end server
@@ -146,3 +146,9 @@ Type User {
    - Read Apollo [Docs](https://www.apollographql.com/docs/react/)
    - Only Two query needed for this app.
    - Handling Errors.
+
+- Completed Project Live [here](https://x-graphql.herokuapp.com/).
+
+---
+
+<p style="text-align: center;">Made With<span style="color: red;"> &#10084; </span>by <a href="https://github.com/nil1729" target="_blank"> Nilanjan Deb </a> </p>
